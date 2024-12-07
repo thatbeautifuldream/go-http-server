@@ -36,4 +36,44 @@ This is a simple HTTP server written in Go that responds with "hello, world" whe
 ## Code Overview
 
 - The server listens on port 3000 by default.
-- The `home` function handles requests to the root URL (`/`) and responds with "hello, world".
+- The `events` function handles requests to the `/events` URL and responds with an event stream.
+
+## Running with Docker
+
+1. Build the Docker image:
+
+   ```bash
+   docker build -t go-http-server .
+   ```
+
+2. Run the Docker container:
+
+   ```bash
+   # Start the service
+   docker-compose up -d
+   ```
+
+3. View logs
+
+   ```bash
+   docker-compose logs -f
+   ```
+
+4. Check container status
+
+   ```bash
+   docker-compose ps
+   ```
+
+5. Restart
+
+   ```bash
+   docker-compose restart
+
+   ```
+
+6. Update and rebuild
+
+   ```bash
+   docker-compose up -d --build
+   ```
