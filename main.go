@@ -11,13 +11,9 @@ var addr = flag.String("addr", ":3000", "http service address")
 
 func main() {
 	flag.Parse()
-	http.HandleFunc("/", home)
 	http.HandleFunc("/events", events)
+	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.ListenAndServe(*addr, nil)
-}
-
-func home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "hello, world")
 }
 
 func events(w http.ResponseWriter, r *http.Request) {
