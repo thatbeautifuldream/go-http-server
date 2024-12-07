@@ -4,10 +4,11 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 )
 
-var addr = flag.String("addr", ":3000", "http service address")
+var addr = flag.String("addr", getEnv("PORT", ":3000"), "http service address")
 
 func main() {
 	flag.Parse()
@@ -29,4 +30,11 @@ func events(w http.ResponseWriter, r *http.Request) {
 		// intentional delay
 		time.Sleep(420 * time.Millisecond)
 	}
+}
+
+func getEnv(key, fallback string) string {
+	if value, exists := os.LookupEnv(key); exists {
+		return ":" + value
+	}
+	return fallback
 }
