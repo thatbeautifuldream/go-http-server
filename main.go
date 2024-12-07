@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-var addr = flag.String("addr", getEnv("PORT", ":3000"), "http service address")
+var addr = flag.String("addr", getEnv("PORT", ":8000"), "http service address")
 
 func main() {
 	flag.Parse()
