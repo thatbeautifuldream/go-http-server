@@ -16,6 +16,11 @@
       sse.onmessage = function (event) {
         resp.innerHTML += event.data + " ";
       };
+
+      // stop the stream after an error
+      sse.onerror = function (event) {
+        sse.close();
+      };
     </script>
   </body>
 </html>
